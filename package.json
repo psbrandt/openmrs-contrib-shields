@@ -1,0 +1,28 @@
+{
+  "name": "openmrs-contrib-sheilds",
+  "version": "1.0.0",
+  "description": "Sheild API for OpenMS Modules",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/psbrandt/openmrs-contrib-sheilds.git"
+  },
+  "keywords": [
+    "openmrs",
+    "sheilds"
+  ],
+  "author": "OpenMRS <pascal@openmrs.org> (http://openmrs.org)",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/psbrandt/openmrs-contrib-sheilds/issues"
+  },
+  "homepage": "https://github.com/psbrandt/openmrs-contrib-sheilds#readme",
+  "dependencies": {
+    "bamboo-api": "0.0.5",
+    "express": "^4.13.4",
+    "request": "^2.69.0"
+  }
+}
