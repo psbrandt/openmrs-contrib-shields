@@ -16,6 +16,13 @@ To get a shield for the build status of a project, look up the `PROJECT-KEY` and
 https://omrs-shields.psbrandt.io/build/PROJECT-KEY/PLAN-KEY
 ````
 
+If you prefer the `PROJECT-KEY` and `PLAN-KEY` to appear on the shield, substitute
+`plan` for `build` in the URL:
+
+````
+https://omrs-shields.psbrandt.io/plan/PROJECT-KEY/PLAN-KEY
+````
+
 ### Latest Module Version
 
 To get the latest version of a module, visit the module page on [Modulus](https://modules.openmrs.org/) to find the `MODULE-ID` (numeric value in the URL) and request:

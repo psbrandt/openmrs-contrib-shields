@@ -8,8 +8,10 @@ var express = require('express');
 var app = express();
 var build = require('./routes/build');
 var version = require('./routes/version');
+var plan = require('./routes/plan');
 
 app.get('/build/:project/:plan', build.build);
+app.get('/plan/:project/:plan', plan.plan);
 app.get('/version/:moduleid', version.version);
 app.get('/omrsversion/:moduleid', version.omrsversion);
 
