@@ -58,6 +58,11 @@ https://omrs-shields.psbrandt.io/omrsversion/MODULE-ID
     <td><img src="https://omrs-shields.psbrandt.io/build/LOGIC/LOGIC"/></td>
   </tr>
   <tr>
+    <td>FHIR Module Build Status</td>
+    <td>https://omrs-shields.psbrandt.io/plan/FHIR/FM</td>
+    <td><img src="https://omrs-shields.psbrandt.io/plan/FHIR/FM"/></td>
+  </tr>
+	<tr>
     <td>Rest Web Services Latest Version</td>
     <td>https://omrs-shields.psbrandt.io/version/153</td>
     <td><img src="https://omrs-shields.psbrandt.io/version/153"/></td>
