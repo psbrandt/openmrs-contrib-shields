@@ -39,6 +39,30 @@ To get the required OpenMRS version for a module, request:
 https://omrs-shields.psbrandt.io/omrsversion/MODULE-ID
 ````
 
+### Custom Shields
+
+Shields with custom labels and values can be generated at the `/custom` endpoint by adding `label`, `value` and `color` to the path. For example:
+
+````
+https://omrs-shields.psbrandt.io/custom/openmrs/rules/green
+````
+
+The value of `color` can be any of `brightgreen` , `green`, `yellowgreen`, `yellow`, `orange`, `red`, `lightgrey`, or `blue`, or a 6 character hex color code like `6a0888` or `81bef7`.
+
+### Parameters
+
+Shields can be customized using the following query parameters.
+
+#### Logo
+
+Use the `logo` query parameter to add either the `openmrs` or [`esaude`](http://esaude.org) logo to your sheild.
+
+#### Style
+
+The `style` query parameter can be used to set the style of the sheild to one of `flat-square` (default), `flat` or `plastic`.
+
+:pushpin: **Due to [badges/shields#671](https://github.com/badges/shields/issues/671), it is not currently possible to use the `style` and `logo` parameters together.**
+
 ## Examples
 
 <table>
@@ -49,28 +73,58 @@ https://omrs-shields.psbrandt.io/omrsversion/MODULE-ID
   </tr>
   <tr>
     <td>Platform 2.0.x Build Status</td>
-    <td>https://omrs-shields.psbrandt.io/build/TRUNK/OC2</td>
+    <td><a href="https://omrs-shields.psbrandt.io/build/TRUNK/OC2">/build/TRUNK/OC2</a></td>
     <td><img src="https://omrs-shields.psbrandt.io/build/TRUNK/OC2"/></td>
   </tr>
   <tr>
     <td>Logic Module Build Status</td>
-    <td>https://omrs-shields.psbrandt.io/build/LOGIC/LOGIC</td>
+    <td><a href="https://omrs-shields.psbrandt.io/build/LOGIC/LOGIC">/build/LOGIC/LOGIC</a></td>
     <td><img src="https://omrs-shields.psbrandt.io/build/LOGIC/LOGIC"/></td>
   </tr>
   <tr>
     <td>FHIR Module Build Status</td>
-    <td>https://omrs-shields.psbrandt.io/plan/FHIR/FM</td>
+    <td><a href="https://omrs-shields.psbrandt.io/plan/FHIR/FM">/plan/FHIR/FM</a></td>
     <td><img src="https://omrs-shields.psbrandt.io/plan/FHIR/FM"/></td>
   </tr>
 	<tr>
-    <td>Rest Web Services Latest Version</td>
-    <td>https://omrs-shields.psbrandt.io/version/153</td>
+    <td>Rest Latest Version</td>
+    <td><a href="https://omrs-shields.psbrandt.io/version/153">/version/153</a></td>
     <td><img src="https://omrs-shields.psbrandt.io/version/153"/></td>
   </tr>
   <tr>
-    <td>Rest Web Services OpenMRS Version</td>
-    <td>https://omrs-shields.psbrandt.io/omrsversion/153</td>
+    <td>Rest OpenMRS Version</td>
+    <td><a href="https://omrs-shields.psbrandt.io/omrsversion/153">/omrsversion/153</a></td>
     <td><img src="https://omrs-shields.psbrandt.io/omrsversion/153"/></td>
+  </tr>
+  <tr>
+    <td>Legacy UI Build Status</td>
+    <td><a href="https://omrs-shields.psbrandt.io/plan/LU/LU?style=flat">/plan/LU/LU?style=flat</a></td>
+    <td><img src="https://omrs-shields.psbrandt.io/plan/LU/LU?style=flat"/></td>
+  </tr>
+  <tr>
+    <td>RefApp Build Status</td>
+    <td><a href="https://omrs-shields.psbrandt.io/plan/REFAPP/OMODDISTRO?style=plastic">/plan/REFAPP/OMODDISTRO?style=plastic</a></td>
+    <td><img src="https://omrs-shields.psbrandt.io/plan/REFAPP/OMODDISTRO?style=plastic"/></td>
+  </tr>
+  <tr>
+    <td>App Framework Build Status</td>
+    <td><a href="https://omrs-shields.psbrandt.io/plan/AF/AF?logo=openmrs">/plan/AF/AF?logo=openmrs</a></td>
+    <td><img src="https://omrs-shields.psbrandt.io/plan/AF/AF?logo=openmrs"/></td>
+  </tr>
+  <tr>
+    <td>Custom Message</td>
+    <td><a href="https://omrs-shields.psbrandt.io/custom/custom/message/green?style=flat">/custom/custom/message/green?style=flat</a></td>
+    <td><img src="https://omrs-shields.psbrandt.io/custom/custom/message/green?style=flat"/></td>
+  </tr>
+  <tr>
+    <td>eSaude Version</td>
+    <td><a href="https://omrs-shields.psbrandt.io/custom/esaude/v1.2.0/brightgreen?logo=esaude">/custom/esaude/v1.2.0/brightgreen?logo=esaude</a></td>
+    <td><img src="https://omrs-shields.psbrandt.io/custom/esaude/v1.2.0/brightgreen?logo=esaude"/></td>
+  </tr>
+  <tr>
+    <td>Unicorn Approved</td>
+    <td><a href="https://omrs-shields.psbrandt.io/custom/unicorn/🦄_approved/ff69b4?logo=openmrs">/custom/unicorn/🦄_approved/ff69b4?logo=openmrs</a></td>
+    <td><img src="https://omrs-shields.psbrandt.io/custom/unicorn/%F0%9F%A6%84_approved/ff69b4?logo=openmrs"/></td>
   </tr>
 </table>
 
@@ -92,4 +146,4 @@ Access the server at [http://localhost:3033/build/TRUNK/OC2](http://localhost:30
 
 ## License
 
-[MPL-2.0](http://openmrs.org/license/)
+[MPL-2.0 w/ HD](http://openmrs.org/license/)

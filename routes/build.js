@@ -6,26 +6,31 @@
  */
 var Bamboo = require('bamboo-api');
 var request = require('request');
-
-var OPENMRS_BAMBOO_URL = 'http://ci.openmrs.org';
-var SHEILDS_IO_BASE = 'http://img.shields.io/badge/'; // http://img.shields.io/badge/<SUBJECT>-<STATUS>-<COLOR>.svg
+var constants = require('./constants');
 
 exports.build = function(req, res) {
   var project = req.params.project;
   var plan = req.params.plan;
-  var bamboo = new Bamboo(OPENMRS_BAMBOO_URL);
-  var url = SHEILDS_IO_BASE;
+
+  var logo = req.query.logo;
+  var style = req.query.style;
+
+  var bamboo = new Bamboo(constants.OPENMRS_BAMBOO_URL);
+  var url = constants.SHEILDS_IO_BASE;
 
   bamboo.getLatestBuildStatus(project + '-' + plan, function(error, result) {
     if (error) {
-      url += 'build-unknown-lightgrey.svg?style=flat-square';
+      url += 'build-unknown-lightgrey.svg';
     } else if (result === "Successful") {
-      url += 'build-passing-green.svg?style=flat-square';
+      url += 'build-passing-green.svg';
     } else if (result === "Failed") {
-      url += 'build-failing-red.svg?style=flat-square';
+      url += 'build-failing-red.svg';
     } else {
-      url += 'build-unknown-lightgrey.svg?style=flat-square';
+      url += 'build-unknown-lightgrey.svg';
     }
+
+    url += '?' + constants.buildQueryParams(logo, style);
+
     request(url).pipe(res);
   });
 };

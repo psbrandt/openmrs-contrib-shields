@@ -5,58 +5,63 @@
  * the terms of the Healthcare Disclaimer located at http://openmrs.org/license.
  */
 var request = require('request');
-
-var OPENMRS_MODULUS_URL = 'https://modules.openmrs.org/modulus/api/modules/';
-var OPENMRS_MODULUS_ARGS = '?order=desc&sort=dateCreated&max=1';
-var OPENMRS_VERSION_BADGE_COLOR = '009384';
-var SHEILDS_IO_BASE = 'http://img.shields.io/badge/'; // http://img.shields.io/badge/<SUBJECT>-<STATUS>-<COLOR>.svg
-
-function sanitize(str) {
-  return str.replace(new RegExp('-', 'g'), '--');
-}
+var constants = require('./constants');
 
 exports.version = function(req, res) {
   var moduleid = req.params.moduleid;
-  var url = SHEILDS_IO_BASE;
 
-  request(OPENMRS_MODULUS_URL + moduleid + '/releases' + OPENMRS_MODULUS_ARGS, {
+  var logo = req.query.logo;
+  var style = req.query.style;
+
+  var url = constants.SHEILDS_IO_BASE;
+
+  request(constants.OPENMRS_MODULUS_URL + moduleid + '/releases' + constants.OPENMRS_MODULUS_ARGS, {
     json: true
   }, function(error, response, releases) {
 
     if (error || response.statusCode !== 200) {
-      url += 'version-unknown-lightgrey.svg?style=flat-square';
+      url += 'version-unknown-lightgrey.svg';
     } else {
       var latestRelease = releases[0];
 
       if (latestRelease !== null && latestRelease.moduleVersion !== null && latestRelease.moduleVersion !== 'undefined') {
-        url += 'version-' + encodeURI(sanitize(latestRelease.moduleVersion)) + '-' + OPENMRS_VERSION_BADGE_COLOR + '.svg?style=flat-square';
+        url += 'version-' + encodeURI(constants.sanitize(latestRelease.moduleVersion)) + '-' + constants.OPENMRS_VERSION_BADGE_COLOR + '.svg';
       } else {
-        url += 'version-unknown-lightgrey.svg?style=flat-square';
+        url += 'version-unknown-lightgrey.svg';
       }
     }
+
+    url += '?' + constants.buildQueryParams(logo, style);
+
     request(url).pipe(res);
   });
 };
 
 exports.omrsversion = function(req, res) {
   var moduleid = req.params.moduleid;
-  var url = SHEILDS_IO_BASE;
 
-  request(OPENMRS_MODULUS_URL + moduleid + '/releases' + OPENMRS_MODULUS_ARGS, {
+  var logo = req.query.logo;
+  var style = req.query.style;
+
+  var url = constants.SHEILDS_IO_BASE;
+
+  request(constants.OPENMRS_MODULUS_URL + moduleid + '/releases' + constants.OPENMRS_MODULUS_ARGS, {
     json: true
   }, function(error, response, releases) {
 
     if (error || response.statusCode !== 200) {
-      url += 'version-unknown-lightgrey.svg?style=flat-square';
+      url += 'version-unknown-lightgrey.svg';
     } else {
       var latestRelease = releases[0];
 
       if (latestRelease !== null && latestRelease.requiredOMRSVersion !== null && latestRelease.requiredOMRSVersion !== 'undefined') {
-        url += 'openmrs_version-' + encodeURI(sanitize(latestRelease.requiredOMRSVersion)) + '-' + OPENMRS_VERSION_BADGE_COLOR + '.svg?style=flat-square';
+        url += 'openmrs_version-' + encodeURI(constants.sanitize(latestRelease.requiredOMRSVersion)) + '-' + constants.OPENMRS_VERSION_BADGE_COLOR + '.svg';
       } else {
-        url += 'version-unknown-lightgrey.svg?style=flat-square';
+        url += 'version-unknown-lightgrey.svg';
       }
     }
+
+    url += '?' + constants.buildQueryParams(logo, style);
 
     request(url).pipe(res);
   });
